@@ -8,7 +8,7 @@ file="./passwd_new"
 awk -i inplace -F':' -OFS':' '/saned/{gsub("/usr/sbin/nologin","/bin/bash") }; {print}' "${file}"
 
 # c. Change shell for user avahi from /usr/sbin/nologin to /bin/bash using SED
-sed -i '/avahi/s/\/usr\/sbin\/nologin/\/bin\/bash/' "${file}"
+sed -i '/avahi:/s/\/usr\/sbin\/nologin/\/bin\/bash/' "${file}"
 
 # d. Save only 1-st 3-th 5-th 7-th columns of each string based on : delimiter
 awk -i inplace -F':' -v OFS=: '{print $1, $3, $5, $7}' "${file}"
