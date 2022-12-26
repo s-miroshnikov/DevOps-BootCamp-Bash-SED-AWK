@@ -16,4 +16,4 @@ sed -i '/avahi:/s/\/usr\/sbin\/nologin/\/bin\/bash/' ./passwd_new
 sed -i '/daemon/d' ./passwd_new
 
 # f. Change shell for all users with even UID to /bin/zsh
-awk -F: '{ if ($3%2=="0") {$NF="/bin/zsh";} }1' OFS=: ./passwd_new > ./tmpfile3 && mv -f ./tmpfile3 ./passwd_new
+awk -F: '{ if ($2%2=="0") {$NF="/bin/zsh";} }1' OFS=: ./passwd_new > ./tmpfile3 && mv -f ./tmpfile3 ./passwd_new
